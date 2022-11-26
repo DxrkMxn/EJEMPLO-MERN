@@ -10,6 +10,7 @@ class AddAlbum extends Component {
     artista: "",
     genero: "",
     year: "",
+    url: "",
     response: ""
   };
 
@@ -23,10 +24,13 @@ class AddAlbum extends Component {
           artista: this.refs.artista.value,
           genero: this.refs.genero.value,
           year: this.refs.year.value,
+          url: this.refs.url.value,
         }
       );
-
       toast("Álbum " + newAlbum.data.newAlbum.nombre + " creado satisfactoriamente" ,{ type: toast.TYPE.SUCCESS, autoClose: 3000 });
+      setTimeout(() => {
+        location.pathname = '/';
+      }, 1000);
     } catch (err) {
       toast(err.message ,{ type: toast.TYPE.ERROR, autoClose: 3000 });
     }
@@ -79,7 +83,7 @@ class AddAlbum extends Component {
           <label htmlFor="year">Año de lanzamiento:</label>
           <input
             type="text"
-            placeholder="Ingrese el year del álbum aquí"
+            placeholder="Ingrese el año del álbum aquí"
             name="year"
             onChange={this.onChangeHandler}
             ref="year"
@@ -88,6 +92,19 @@ class AddAlbum extends Component {
             minLength="3"
             maxLength="33"
             id="year"
+          />
+          <label htmlFor="url">Portada:</label>
+          <input
+            type="text"
+            placeholder="Ingrese la URL de al portada del álbum aquí"
+            name="url"
+            onChange={this.onChangeHandler}
+            ref="url"
+            className="Add-Album-Input"
+            required
+            minLength="3"
+            maxLength="33"
+            id="url"
           />
           
           <button type="submit" className="Add-Album-Submit fa fa-plus"></button>

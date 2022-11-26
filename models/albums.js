@@ -29,6 +29,13 @@ const albumsSchema = new mongoose.Schema({
     maxlength: 33,
     trim: true
   },
+  url: {
+    type: String,
+    required: true,
+    minlength: 3,
+    maxlength: 200,
+    trim: true
+  }
 });
 
 module.exports = mongoose.model('albums', albumsSchema);

@@ -38,6 +38,7 @@ router.post("/", async (req, res) => {
       artista: req.body.artista,
       genero: req.body.genero,
       year: req.body.year,
+      url: req.body.url,
     });
     res.send({ newAlbum });
   } catch (err) {
